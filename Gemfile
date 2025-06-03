@@ -61,3 +61,16 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+group :development, :test do
+  gem 'faker'
+end
+
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+gem 'hamlit'
+gem 'haml-rails'
+gem 'html2haml', require: false
