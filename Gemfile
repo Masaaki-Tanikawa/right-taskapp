@@ -63,16 +63,16 @@ group :test do
 end
 
 group :development, :test do
-  gem 'faker'
+  gem "faker"
 end
 
 group :development do
-  gem 'better_errors'
-  gem 'binding_of_caller'
-	gem 'annotaterb'
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem "annotaterb"
 end
 
-gem 'hamlit'
-gem 'haml-rails'
-gem 'html2haml', require: false
+gem "hamlit"
+gem "haml-rails"
+gem "html2haml", require: false
 gem "dartsass-rails", "~> 0.5.1"
