@@ -76,3 +76,5 @@ gem "hamlit"
 gem "haml-rails"
 gem "html2haml", require: false
 gem "dartsass-rails", "~> 0.5.1"
+
+gem "devise", "~> 4.9"
