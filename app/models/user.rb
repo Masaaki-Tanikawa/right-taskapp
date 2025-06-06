@@ -21,4 +21,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  # パスワードの最低文字数を6文字から4文字に変更
+  validates :password, length: { minimum: 4 }, if: :password_required?
 end

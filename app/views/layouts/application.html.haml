@@ -14,4 +14,14 @@
     %link{:href => "/icon.png", :rel => "apple-touch-icon"}/
     = stylesheet_link_tag :app, "data-turbo-track": "reload"
   %body
+    %header.header
+      .header_logo
+        / ヘッダーロゴの遷移先をルートに設定
+        %p.header_pageTitle
+          = link_to 'Boards', root_path
+      / ユーザー表示をサインインしている場合に限定する
+      - if user_signed_in?
+        .header_avatar
+          / アバター画像を表示
+          = image_tag 'default-avatar.png', class: 'header_avatar'
     = yield
