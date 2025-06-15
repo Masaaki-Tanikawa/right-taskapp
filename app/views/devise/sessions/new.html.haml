@@ -1,18 +1,18 @@
-.inner
-  %h2 Log in
+.user-inner
+  %h2= t('devise.sessions.new.sign_in')
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .user_field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'user_text'
-    .user_field
-      = f.label :password
-      %br/
-      = f.password_field :password, autocomplete: "current-password", class: 'user_text'
+    .user-field
+      = f.label :email, class: 'user-label'
+      = f.email_field :email, autofocus: true, autocomplete: "email", class: 'user-text'
+    .user-field
+      = f.label :password, class: 'user-label'
+      = f.password_field :password, autocomplete: "current-password", class: 'user-text'
     - if devise_mapping.rememberable?
-      .user_field
-        = f.check_box :remember_me
-        = f.label :remember_me
-    .actions
-      = f.submit "Submit", class: 'btn-primary'
+      .user-field
+        %label.custom-checkbox-wrapper
+          = f.check_box :remember_me, class: 'visually-hidden'
+          %span.custom-box
+          = f.label :remember_me
+    .user-actions
+      = f.submit t('devise.sessions.new.sign_in'), class: 'btn-primary'
 
