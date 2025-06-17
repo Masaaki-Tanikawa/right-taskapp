@@ -1,2 +1,14 @@
-%h1 Boards#index
-%p Find me in app/views/boards/index.html.haml
+.inner
+  %h2 All Boards
+
+  - @boards.each do |board|
+    = link_to board_path(board), class: 'board' do
+      .board-content
+        .board-text
+          .board-title= board.title
+          .board-description= board.description
+        .board-icon= image_tag 'actions.svg'
+      .board-image= image_tag 'default-avatar.png'
+
+  = link_to new_board_path, class: 'newboard' do
+    .newboard-content + Add new board
