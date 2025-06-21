@@ -48,6 +48,7 @@ class BoardsController < ApplicationController
   end
 
   def board_params
-    params.require(:board).permit(:title, :body) # 必要なカラムに応じて調整
+    params.require(:board).permit(:title, :description)
   end
+
 end
