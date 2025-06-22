@@ -7,3 +7,8 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+user = User.find(2)
+user.boards.create(title: 'タイトル1', description: 'コンテンツ1')
+user.boards.create(title: 'タイトル2', description: 'コンテンツ2')
+

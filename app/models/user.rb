@@ -23,4 +23,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   # パスワードの最低文字数を6文字から4文字に変更
   validates :password, length: { minimum: 4 }, if: :password_required?
+
+  has_many :boards, dependent: :destroy
 end
