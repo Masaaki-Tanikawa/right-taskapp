@@ -1,29 +1,28 @@
 # == Schema Information
 #
-# Table name: boards
+# Table name: cards
 #
 #  id          :bigint           not null, primary key
 #  description :text             not null
 #  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  user_id     :bigint           not null
+#  board_id    :bigint           not null
 #
 # Indexes
 #
-#  index_boards_on_user_id  (user_id)
+#  index_cards_on_board_id  (board_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (user_id => users.id)
+#  fk_rails_...  (board_id => boards.id)
 #
-class Board < ApplicationRecord
+class Card < ApplicationRecord
   validates :title, presence: true
   validates :title, length: { minimum: 2, maximum: 100 }
   validates :title, format: { with: /\A(?!\@)/ }
   validates :description, presence: true
   validates :description, length: { minimum: 5 }
 
-  belongs_to :user
-  has_many :cards, dependent: :destroy
+  belongs_to :board
 end
