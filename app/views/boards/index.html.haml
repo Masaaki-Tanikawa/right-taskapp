@@ -2,7 +2,7 @@
   %h2 All Boards
   - @boards.each do |board|
     .board
-      = link_to board_path(board), class: 'board-link' do
+      = link_to board_cards_path(board), class: 'board-link' do
         .board-content
           .board-text
             .board-title= board.title
@@ -10,13 +10,12 @@
           - if user_signed_in? && current_user.boards.exists?(id: board.id)
             .board-actions
               .board-icon
-                = image_tag 'actions.svg'
+                = image_tag 'actions.svg', alt: 'Actions Icon'
                 .dropdown-content.mini
                   = link_to '編集する', edit_board_path(board)
                   = link_to '削除する', board_path(board), data: { turbo_method: 'delete', turbo_confirm: '本当に削除してもよろしいですか？' }
-      .board-image
-        = image_tag 'default-avatar.png'
-
+        .board-image
+          = image_tag 'default-avatar.png', alt: 'Default Avatar'
 
   = link_to new_board_path, class: 'newboard' do
-    .newboard-content + Add new board
+    .newboard-content ＋ 新しいボードを追加

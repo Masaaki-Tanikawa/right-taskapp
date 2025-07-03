@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: 'home#index'
-  resources :boards do
+  resources :boards , except: [:show] do
 		resources :cards
 	end
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

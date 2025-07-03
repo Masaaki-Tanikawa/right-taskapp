@@ -1,2 +1,20 @@
-%h1 Cards#index
-%p Find me in app/views/cards/index.html.haml
+.inner
+  %h2= @board.title
+  - @cards.each do |card|
+    .card
+      = link_to board_card_path(@board, card), class: 'card-link' do
+        - if card.eyecatch.attached?
+          .card_image
+            = image_tag card.eyecatch
+        .card-content-top
+          .card-text
+            .card-title= card.title
+            .card-description= card.description
+        .card-content-bottom
+          .card-image
+            = image_tag 'default-avatar.png'
+          .card-comment
+
+  -#  このボードに紐づく新しいカード作成ページへのリンクを作る
+  = link_to new_board_card_path(@board), class: 'newcard' do
+    .newcard-content ＋ 新しいカードを追加

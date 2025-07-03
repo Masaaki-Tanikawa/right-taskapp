@@ -1,6 +1,7 @@
 @use 'header';
 @use 'user';
 @use 'board';
+@use 'card';
 @use 'form';
 @use 'variables' as *;
 
@@ -46,3 +47,6 @@ img{
 	object-fit: cover;
 }
 
+.flash {
+	padding:16px 24px;
+}

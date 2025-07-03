@@ -25,4 +25,9 @@
         .header_avatar
           / アバター画像を表示
           = image_tag 'default-avatar.png', class: 'header_avatar'
+
+    / flashメッセージを表示
+    - flash.each do |type, message|
+      .flash{ class: "flash-#{type}" }= message
+
     = yield

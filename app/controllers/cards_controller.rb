@@ -1,27 +1,28 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
-    @cards = card.all
+    @board = Board.find(params[:board_id]) # URLのboard_idから対象のボードを取得
+    @cards = @board.cards # そのボードに紐づく全カードを取得
   end
 
   def show
   end
 
   def new
-    @card = current_user.cards.build
+    @board = Board.find(params[:board_id])  # URLのboard_idから対象のboardを取得
+    @card = @board.cards.build  # boardに紐づけてカードを作成
   end
 
   def create
-    @card = current_user.cards.build(card_params)
+    @board = Board.find(params[:board_id])  # URLのboard_idから対象のboardを取得
+    @card = @board.cards.build(card_params) # 取得したBoardに紐づく新しいCardを作成
     if @card.save
-      redirect_to card_path(@card), notice: '保存できました'
+      redirect_to board_card_path(@board, @card), notice: '保存できました' # 保存後、ネストされたカードの詳細ページ /boards/:board_id/cards/:id にリダイレクト
     else
-      flash.now[:error] = '保存に失敗しました'
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def edit
   end
@@ -30,7 +31,6 @@ class CardsController < ApplicationController
     if @card.update(card_params)
       redirect_to card_path(@card), notice: '更新できました'
     else
-      flash.now[:error] = '更新に失敗しました'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -43,12 +43,8 @@ class CardsController < ApplicationController
 
   private
 
-  def set_card
-    @card = card.find(params[:id])
-  end
 
   def card_params
-    params.require(:card).permit(:title, :description)
+    params.require(:card).permit(:title, :description, :eyecatch)
   end
-
 end

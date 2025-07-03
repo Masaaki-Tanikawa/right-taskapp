@@ -1,15 +1,13 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit, :update]
+  before_action :set_board, only: [ :edit, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @boards = Board.all
   end
 
-  def show
-  end
-
   def new
+		# このボードに紐づく全てのカードを取得して@cardsに代入する
     @board = current_user.boards.build
   end
 
