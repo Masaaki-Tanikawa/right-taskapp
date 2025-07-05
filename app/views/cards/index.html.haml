@@ -1,20 +1,22 @@
 .inner
   %h2= @board.title
   - @cards.each do |card|
-    .card
+    .cards
       = link_to board_card_path(@board, card), class: 'card-link' do
         - if card.eyecatch.attached?
-          .card_image
+          .cards-image
             = image_tag card.eyecatch
-        .card-content-top
-          .card-text
-            .card-title= card.title
-            .card-description= card.description
-        .card-content-bottom
-          .card-image
+        .cards-content-top
+          .cards-title= card.title
+          .cards-description= card.description
+        .cards-content-bottom
+          .cards-profile
             = image_tag 'default-avatar.png'
-          .card-comment
+          .cards-comment
+            .cards-comment-number 23
+            .cards-comment-icon
+              = image_tag 'comment.svg'
 
   -#  このボードに紐づく新しいカード作成ページへのリンクを作る
-  = link_to new_board_card_path(@board), class: 'newcard' do
-    .newcard-content ＋ 新しいカードを追加
+  = link_to new_board_card_path(@board), class: 'newcards' do
+    .newcards-content ＋ 新しいカードを追加

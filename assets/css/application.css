@@ -191,74 +191,65 @@ h2 {
   font-size: 18px;
 }
 
-.dropdown-content {
-  font-weight: normal;
-  display: none;
-  right: 0;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-.dropdown-content.mini {
-  min-width: 100px;
-}
-
-.dropdown-content a {
-  padding: 8px 16px;
-  text-decoration: none;
-  display: block;
-  color: #000;
-}
-
-.dropdown-content a:hover {
-  background-color: white;
-}
-
 .board-icon:hover .dropdown-content {
   display: block;
 }
 
-.card {
+.cards {
   background: #f4f4f4;
   border-radius: 10px;
-  padding: 32px 16px 20px;
+  padding: 20px 16px 20px;
   margin-bottom: 26px;
 }
-.card-link {
+.cards-link {
   width: 100%;
 }
-.card-content {
-  display: flex;
-  gap: 12px;
-  margin-bottom: 30px;
-  justify-content: space-between;
+.cards-image {
+  width: 100%;
+  margin-bottom: 27px;
 }
-.card-icon {
+.cards-image img {
+  max-height: 170px;
+  border-radius: 8px;
+}
+.cards-icon {
   width: 24px;
   position: relative;
   display: inline-block;
 }
-.card-text {
-  width: calc(100% - 36px);
-}
-.card-title {
+.cards-title {
   font-size: 18px;
-  margin-bottom: 6px;
+  font-weight: bold;
 }
-.card-description {
+.cards-description {
   font-size: 14px;
   opacity: 0.4;
+  margin-top: 6px;
 }
-.card-image {
+.cards-profile {
   width: 30px;
 }
-.card-image img {
+.cards-profile img {
   border-radius: 50%;
 }
+.cards-comment {
+  display: flex;
+}
+.cards-comment-number {
+  opacity: 0.4;
+  font-size: 14px;
+}
+.cards-comment-icon {
+  width: 20px;
+}
+.cards-content-bottom {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
 
-.newcard {
+.newcards {
   border-radius: 10px;
   border: 1px dotted rgba(0, 0, 0, 0.2);
   height: 160px;
@@ -266,8 +257,79 @@ h2 {
   justify-content: center;
   align-items: center;
 }
-.newcard-content {
+.newcards-content {
   font-size: 18px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  gap: 24px;
+}
+.card-title {
+  padding-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.card-icon {
+  width: 24px;
+  position: relative;
+  display: inline-block;
+}
+.card-image {
+  width: 100%;
+  margin-bottom: 36px;
+}
+.card-image img {
+  max-height: 170px;
+  border-radius: 8px;
+}
+.card-description {
+  background: #F4F4F4;
+  padding: 20px 16px 26px;
+  font-size: 14px;
+  border-radius: 8px;
+  margin-bottom: 36px;
+}
+.card-comment {
+  margin-bottom: 36px;
+}
+.card-comment-title {
+  font-size: 26px;
+}
+.card-comment-content {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+.card-comment-img {
+  width: 40px;
+}
+.card-comment-img img {
+  border-radius: 50%;
+}
+.card-comment-text {
+  font-size: 14px;
+}
+
+.newcomment-content {
+  border-radius: 10px;
+  border: 1px dotted rgba(0, 0, 0, 0.2);
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newcomment-content-content {
+  font-size: 18px;
+}
+
+.card-icon:hover .dropdown-content {
+  display: block;
 }
 
 .form ul {
@@ -338,4 +400,29 @@ img {
 
 .flash {
   padding: 16px 24px;
+}
+
+.dropdown-content {
+  font-weight: normal;
+  display: none;
+  right: 0;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown-content.mini {
+  min-width: 100px;
+}
+
+.dropdown-content a {
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+  color: #000;
+}
+
+.dropdown-content a:hover {
+  background-color: white;
 }

@@ -5,8 +5,10 @@ class CardsController < ApplicationController
     @cards = @board.cards # そのボードに紐づく全カードを取得
   end
 
-  def show
-  end
+def show
+  @board = Board.find(params[:board_id])
+  @card = @board.cards.find(params[:id])
+end
 
   def new
     @board = Board.find(params[:board_id])  # URLのboard_idから対象のboardを取得
@@ -29,20 +31,20 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to card_path(@card), notice: '更新できました'
+      redirect_to board_card_path(@board, @card), notice: '更新できました'
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    card = current_user.cards.find(params[:id])
-    card.destroy!
-    redirect_to cards_path, status: :see_other, notice: '削除に成功しました'
+    @board = Board.find(params[:board_id]) # board を特定
+    @card = @board.cards.find(params[:id]) # board に紐づく card を取得
+    @card.destroy!
+    redirect_to board_cards_path(@board), status: :see_other, notice: '削除に成功しました'
   end
 
   private
-
 
   def card_params
     params.require(:card).permit(:title, :description, :eyecatch)

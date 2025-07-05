@@ -1,2 +1,26 @@
-%h1 Cards#show
-%p Find me in app/views/cards/show.html.haml
+.inner
+  .card
+    .card-top
+      %h2.card-title= @card.title
+      - if user_signed_in? && current_user.boards.exists?(id: @board.id)
+        .card-actions
+          .card-icon
+            = image_tag 'actions.svg', alt: 'Actions Icon'
+            .dropdown-content.mini
+              = link_to '編集する', edit_board_card_path(@card)
+              = link_to '削除する', board_card_path(@board, @card), data: { turbo_method: 'delete', turbo_confirm: '本当に削除してもよろしいですか？' }
+    - if @card.eyecatch.attached?
+      .card-image
+        = image_tag @card.eyecatch
+    .card-description= @card.description
+    .card-comment
+      .card-comment-title Comment
+      .card-comment-content
+        .card-comment-img
+          = image_tag 'default-avatar.png'
+        .card-comment-text コメントが入ります。コメントが入ります。コメントが入ります。
+
+    .newcomment-content ＋ 新しいコメントを追加
+  -# -#  このカードに紐づく新しいコメント作成ページへのリンクを作る
+  -# = link_to new_board_card_comment_path(@board, @card), class: 'newcomment' do
+  -#   .newcomment-content ＋ 新しいコメントを追加
