@@ -4,7 +4,7 @@
 			%li= message
 	= form_with(model: [@board, @card], local: true) do |f| # model: [@board, @card] で /boards/:board_id/cards に対応
 		.form-field
-			= f.label :eyecatch, 'アイキャッチ', class: 'form-label'
+			= f.label :eyecatch, class: 'form-label'
 			= f.file_field :eyecatch,class: 'form-text'
 		.form-field
 			= f.label :title, class: 'form-label'

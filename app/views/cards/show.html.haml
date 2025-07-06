@@ -15,12 +15,12 @@
     .card-description= @card.description
     .card-comment
       .card-comment-title Comment
-      .card-comment-content
-        .card-comment-img
-          = image_tag 'default-avatar.png'
-        .card-comment-text コメントが入ります。コメントが入ります。コメントが入ります。
+      - @comments.each do |comment|
+        .card-comment-content
+          .card-comment-img
+            = image_tag 'default-avatar.png'
+          .card-comment-text
+            %p= comment.content
 
+  = link_to new_board_card_comment_path(@board, @card), class: 'newcomment' do
     .newcomment-content ＋ 新しいコメントを追加
-  -# -#  このカードに紐づく新しいコメント作成ページへのリンクを作る
-  -# = link_to new_board_card_comment_path(@board, @card), class: 'newcomment' do
-  -#   .newcomment-content ＋ 新しいコメントを追加
