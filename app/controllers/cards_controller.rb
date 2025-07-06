@@ -8,6 +8,7 @@ class CardsController < ApplicationController
 def show
   @board = Board.find(params[:board_id])
   @card = @board.cards.find(params[:id])
+  @comments = @card.comments
 end
 
   def new
@@ -27,13 +28,13 @@ end
 
 
   def edit
-		@card = Card.find(params[:id])
-		@board = @card.board
+    @card = Card.find(params[:id])
+    @board = @card.board
   end
 
   def update
-		@card = Card.find(params[:id])
-		@board = @card.board
+    @card = Card.find(params[:id])
+    @board = @card.board
     if @card.update(card_params)
       redirect_to board_card_path(@board, @card), notice: '更新できました'
     else
