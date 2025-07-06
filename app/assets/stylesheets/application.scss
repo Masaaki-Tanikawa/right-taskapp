@@ -76,3 +76,24 @@ img{
 .dropdown-content a:hover {
   background-color: white;
 }
+
+.inner{
+	padding:32px 24px;
+}
+h2{
+	font-size: 26px;
+	font-weight: bold;
+	padding-bottom: 32px;
+}
+.btn-primary{
+	background-color: #F8BD1C;
+	color: #fff;
+	font-size: 18px;
+	display: inline-block;
+	text-align: center;
+	border: 0;
+	width: 100%;
+	padding: 8px 0px;
+	border-radius: 4px;
+	cursor: pointer;
+}

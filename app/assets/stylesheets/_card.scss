@@ -3,10 +3,10 @@
 .cards {
 	background: #f4f4f4;
 	border-radius: 10px;
-	padding: 20px 16px 20px;
 	margin-bottom: 26px;
 	&-link {
 		width: 100%;
+		padding: 20px 16px 20px;
 	}
 	&-image {
 		width: 100%;
@@ -31,6 +31,11 @@
 		font-size: 14px;
 		opacity: 0.4;
 		margin-top: 6px;
+		display: -webkit-box;
+		-webkit-line-clamp: 2; /* 表示する最大行数 */
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
 	}
 
 	&-profile {
@@ -104,6 +109,7 @@
 		font-size: 14px;
 		border-radius: 8px;
 		margin-bottom: 36px;
+		word-break: break-word;
 	}
 	&-comment{
 		margin-bottom: 36px;

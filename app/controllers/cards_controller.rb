@@ -27,9 +27,13 @@ end
 
 
   def edit
+		@card = Card.find(params[:id])
+		@board = @card.board
   end
 
   def update
+		@card = Card.find(params[:id])
+		@board = @card.board
     if @card.update(card_params)
       redirect_to board_card_path(@board, @card), notice: '更新できました'
     else

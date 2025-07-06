@@ -1,2 +1,8 @@
-%h1 Cards#edit
-%p Find me in app/views/cards/edit.html.haml
+.inner
+  %h2 カードの編集
+
+  - if @card.eyecatch.attached?
+    .eyecatch-preview
+      = image_tag @card.eyecatch, alt: '登録済みのアイキャッチ', class: 'eyecatch-image'
+
+  = render 'form', board: @board, card: @card

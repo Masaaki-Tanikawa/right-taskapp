@@ -19,7 +19,7 @@
       .header_logo
         / ヘッダーロゴの遷移先をルートに設定
         %p.header_pageTitle
-          = link_to 'Boards'
+          = link_to 'Board', root_path
       / ユーザー表示をサインインしている場合に限定する
       - if user_signed_in?
         .header_avatar

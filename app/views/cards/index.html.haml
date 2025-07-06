@@ -2,7 +2,7 @@
   %h2= @board.title
   - @cards.each do |card|
     .cards
-      = link_to board_card_path(@board, card), class: 'card-link' do
+      = link_to board_card_path(@board, card), class: 'cards-link' do
         - if card.eyecatch.attached?
           .cards-image
             = image_tag card.eyecatch

@@ -26,7 +26,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update(board_params)
-      redirect_to board_path(@board), notice: '更新できました'
+      redirect_to boards_path, notice: '更新できました'
     else
       flash.now[:error] = '更新に失敗しました'
       render :edit, status: :unprocessable_entity
