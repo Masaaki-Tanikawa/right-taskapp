@@ -13,6 +13,9 @@ ja:
       card:
         title: 'テーマ'
         description: '内容'
+        eyecatch: 'アイキャッチ'
+      comment:
+        content: 'コメント内容'
   date:
     abbr_day_names:
     - 日
