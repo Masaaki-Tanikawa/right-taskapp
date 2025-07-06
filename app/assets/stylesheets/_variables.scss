@@ -4,28 +4,3 @@ $base-bg-color: #fff;
 $font-lg: 22px;
 $text-base-color: #000;
 
-.inner{
-	padding:32px 24px;
-}
-h2{
-	font-size: 26px;
-	font-weight: bold;
-	padding-bottom: 32px;
-}
-.btn-primary{
-	position: absolute;
-	content: "";
-	bottom: 32px;
-	left: 50%;
-	transform: translateX(-50%);
-	background-color: #F8BD1C;
-	color: #fff;
-	font-size: 18px;
-	display: inline-block;
-	text-align: center;
-	border: 0;
-	width: calc(100% - 48px);
-	padding: 8px 0px;
-	border-radius: 4px;
-	cursor: pointer;
-}

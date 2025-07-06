@@ -1,6 +1,7 @@
 @use 'header';
 @use 'user';
 @use 'board';
+@use 'card';
 @use 'form';
 @use 'variables' as *;
 
@@ -46,3 +47,53 @@ img{
 	object-fit: cover;
 }
 
+.flash {
+	padding:16px 24px;
+}
+
+.dropdown-content {
+  font-weight: normal;
+  display: none;
+  right: 0;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+
+  &.mini {
+    min-width: 100px;
+  }
+}
+
+.dropdown-content a {
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+  color: $text-base-color;
+}
+
+.dropdown-content a:hover {
+  background-color: white;
+}
+
+.inner{
+	padding:32px 24px;
+}
+h2{
+	font-size: 26px;
+	font-weight: bold;
+	padding-bottom: 32px;
+}
+.btn-primary{
+	background-color: #F8BD1C;
+	color: #fff;
+	font-size: 18px;
+	display: inline-block;
+	text-align: center;
+	border: 0;
+	width: 100%;
+	padding: 8px 0px;
+	border-radius: 4px;
+	cursor: pointer;
+}

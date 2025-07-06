@@ -1,32 +1,4 @@
 @charset "UTF-8";
-.inner {
-  padding: 32px 24px;
-}
-
-h2 {
-  font-size: 26px;
-  font-weight: bold;
-  padding-bottom: 32px;
-}
-
-.btn-primary {
-  position: absolute;
-  content: "";
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #F8BD1C;
-  color: #fff;
-  font-size: 18px;
-  display: inline-block;
-  text-align: center;
-  border: 0;
-  width: calc(100% - 48px);
-  padding: 8px 0px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -166,11 +138,16 @@ h2 {
 }
 .board-title {
   font-size: 18px;
-  margin-bottom: 6px;
+  margin-bottom: 12px;
 }
 .board-description {
   font-size: 14px;
   opacity: 0.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .board-image {
   width: 30px;
@@ -191,60 +168,179 @@ h2 {
   font-size: 18px;
 }
 
-.dropdown-content {
-  font-weight: normal;
-  display: none;
-  right: 0;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
-}
-.dropdown-content.mini {
-  min-width: 100px;
-}
-
-.dropdown-content a {
-  padding: 8px 16px;
-  text-decoration: none;
-  display: block;
-  color: #000;
-}
-
-.dropdown-content a:hover {
-  background-color: white;
-}
-
 .board-icon:hover .dropdown-content {
   display: block;
 }
 
-form ul {
-  margin-bottom: 20px;
+.cards {
+  background: #f4f4f4;
+  border-radius: 10px;
+  margin-bottom: 26px;
+}
+.cards-link {
+  width: 100%;
+  padding: 20px 16px 20px;
+}
+.cards-image {
+  width: 100%;
+  margin-bottom: 27px;
+}
+.cards-image img {
+  max-height: 170px;
+  border-radius: 8px;
+}
+.cards-icon {
+  width: 24px;
+  position: relative;
+  display: inline-block;
+}
+.cards-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+.cards-description {
+  font-size: 14px;
+  opacity: 0.4;
+  margin-top: 6px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* 表示する最大行数 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cards-profile {
+  width: 30px;
+}
+.cards-profile img {
+  border-radius: 50%;
+}
+.cards-comment {
+  display: flex;
+}
+.cards-comment-number {
+  opacity: 0.4;
+  font-size: 14px;
+}
+.cards-comment-icon {
+  width: 20px;
+}
+.cards-content-bottom {
+  margin-top: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
 }
 
+.newcards {
+  border-radius: 10px;
+  border: 1px dotted rgba(0, 0, 0, 0.2);
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newcards-content {
+  font-size: 18px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  gap: 24px;
+}
+.card-title {
+  padding-bottom: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.card-icon {
+  width: 24px;
+  position: relative;
+  display: inline-block;
+}
+.card-image {
+  width: 100%;
+  margin-bottom: 36px;
+}
+.card-image img {
+  max-height: 170px;
+  border-radius: 8px;
+}
+.card-description {
+  background: #F4F4F4;
+  padding: 20px 16px 26px;
+  font-size: 14px;
+  border-radius: 8px;
+  margin-bottom: 36px;
+  word-break: break-word;
+}
+.card-comment {
+  margin-bottom: 36px;
+}
+.card-comment-title {
+  font-size: 26px;
+}
+.card-comment-content {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+.card-comment-img {
+  width: 40px;
+}
+.card-comment-img img {
+  border-radius: 50%;
+}
+.card-comment-text {
+  font-size: 14px;
+}
+
+.newcomment-content {
+  border-radius: 10px;
+  border: 1px dotted rgba(0, 0, 0, 0.2);
+  height: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newcomment-content-content {
+  font-size: 18px;
+}
+
+.card-icon:hover .dropdown-content {
+  display: block;
+}
+
+.form ul {
+  margin-bottom: 20px;
+}
 .form-label {
   display: block;
   font-size: 18px;
   margin-bottom: 8px;
 }
-
 .form-field + .form-field {
   margin-top: 20px;
 }
-
 .form-text {
   font-size: 16px;
   width: 100%;
   height: 40px;
   background-color: #f4f4f4;
   border-radius: 10px;
-  border: 0px;
+  border: 0;
   padding: 10px;
 }
 .form-text.text-area {
   height: 200px;
+}
+.form-actions {
+  margin-top: 36px;
+  text-align: center;
 }
 
 html {
@@ -287,4 +383,56 @@ img {
   height: auto;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+.flash {
+  padding: 16px 24px;
+}
+
+.dropdown-content {
+  font-weight: normal;
+  display: none;
+  right: 0;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+.dropdown-content.mini {
+  min-width: 100px;
+}
+
+.dropdown-content a {
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+  color: #000;
+}
+
+.dropdown-content a:hover {
+  background-color: white;
+}
+
+.inner {
+  padding: 32px 24px;
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: bold;
+  padding-bottom: 32px;
+}
+
+.btn-primary {
+  background-color: #F8BD1C;
+  color: #fff;
+  font-size: 18px;
+  display: inline-block;
+  text-align: center;
+  border: 0;
+  width: 100%;
+  padding: 8px 0px;
+  border-radius: 4px;
+  cursor: pointer;
 }

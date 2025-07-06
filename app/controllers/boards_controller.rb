@@ -1,15 +1,13 @@
 class BoardsController < ApplicationController
-  before_action :set_board, only: [:show, :edit, :update]
+  before_action :set_board, only: [ :edit, :update]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @boards = Board.all
   end
 
-  def show
-  end
-
   def new
+		# このボードに紐づく全てのカードを取得して@cardsに代入する
     @board = current_user.boards.build
   end
 
@@ -28,7 +26,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update(board_params)
-      redirect_to board_path(@board), notice: '更新できました'
+      redirect_to boards_path, notice: '更新できました'
     else
       flash.now[:error] = '更新に失敗しました'
       render :edit, status: :unprocessable_entity

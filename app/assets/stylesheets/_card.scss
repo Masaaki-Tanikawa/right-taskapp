@@ -1,0 +1,151 @@
+@use "variables" as *;
+
+.cards {
+	background: #f4f4f4;
+	border-radius: 10px;
+	margin-bottom: 26px;
+	&-link {
+		width: 100%;
+		padding: 20px 16px 20px;
+	}
+	&-image {
+		width: 100%;
+		margin-bottom: 27px;
+		img {
+			max-height: 170px;
+			border-radius: 8px;
+		}
+	}
+	&-content-top {
+	}
+	&-icon {
+		width: 24px;
+		position: relative;
+		display: inline-block;
+	}
+	&-title {
+		font-size: 18px;
+		font-weight: bold;
+	}
+	&-description {
+		font-size: 14px;
+		opacity: 0.4;
+		margin-top: 6px;
+		display: -webkit-box;
+		-webkit-line-clamp: 2; /* 表示する最大行数 */
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	&-profile {
+		width: 30px;
+		img {
+			border-radius: 50%;
+		}
+	}
+	&-comment {
+		display: flex;
+		&-number {
+			opacity: 0.4;
+			font-size: 14px;
+		}
+		&-icon {
+			width: 20px;
+		}
+	}
+	&-content-bottom {
+		margin-top: 36px;
+		display: flex;
+		justify-content: space-between;
+		align-items: end;
+	}
+}
+.newcards {
+	border-radius: 10px;
+	border: 1px dotted #00000033;
+	height: 160px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&-content {
+		font-size: 18px;
+	}
+}
+
+.card {
+	&-top {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 32px;
+		gap: 24px;
+
+	}
+	 &-title {
+			padding-bottom: 0;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			max-width: 100%;
+	}
+	&-icon {
+		width: 24px;
+		position: relative;
+    display: inline-block;
+	}
+	&-image{
+		width: 100%;
+		margin-bottom: 36px;
+		img {
+			max-height: 170px;
+			border-radius: 8px;
+		}
+	}
+	&-description{
+		background: #F4F4F4;
+		padding: 20px 16px 26px;
+		font-size: 14px;
+		border-radius: 8px;
+		margin-bottom: 36px;
+		word-break: break-word;
+	}
+	&-comment{
+		margin-bottom: 36px;
+		&-title{
+			font-size: 26px;
+		}
+		&-content{
+			display: flex;
+			gap: 16px;
+			margin-top: 24px;
+		}
+		&-img{
+			width: 40px;
+			img{
+				border-radius: 50%;
+			}
+		}
+		&-text{
+			font-size: 14px;
+		}
+	}
+}
+
+.newcomment-content {
+	border-radius: 10px;
+	border: 1px dotted #00000033;
+	height: 160px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	&-content {
+		font-size: 18px;
+	}
+}
+
+.card-icon:hover .dropdown-content {
+  display: block;
+}

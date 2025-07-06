@@ -10,6 +10,9 @@ ja:
       board:
         title: 'タイトル'
         description: '概要'
+      card:
+        title: 'テーマ'
+        description: '内容'
   date:
     abbr_day_names:
     - 日
