@@ -4,6 +4,7 @@
 @use 'card';
 @use 'form';
 @use 'comment';
+@use 'profile';
 @use 'variables' as *;
 
 
@@ -97,4 +98,8 @@ h2{
 	padding: 8px 0px;
 	border-radius: 4px;
 	cursor: pointer;
+}
+
+.header-avatar:hover .dropdown-content {
+  display: block;
 }
