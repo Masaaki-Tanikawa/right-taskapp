@@ -35,10 +35,17 @@
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
+	&-author{
+		display: flex;
+		align-items: center;
+	}
 	&-image {
-		width: 30px;
+		margin-left: 12px;
+		margin-right: 8px;
 		img {
 			border-radius: 50%;
+			width: 30px;
+			height: 30px;
 		}
 	}
 }
