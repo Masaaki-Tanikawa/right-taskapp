@@ -9,16 +9,15 @@
             .dropdown-content.mini
               = link_to '編集する', edit_board_card_path(@card)
               = link_to '削除する', board_card_path(@board, @card), data: { turbo_method: 'delete', turbo_confirm: '本当に削除してもよろしいですか？' }
-    - if @card.eyecatch.attached?
-      .card-image
-        = image_tag @card.eyecatch
     .card-description= @card.description
     .card-comment
       .card-comment-title Comment
       - @comments.each do |comment|
         .card-comment-content
-          .card-comment-img
-            = image_tag 'default-avatar.png'
+          .card-author
+            .card-image
+              = image_tag comment.user.avatar_image
+            .card-name= comment.user.display_name
           .card-comment-text
             %p= comment.content
 

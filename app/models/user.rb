@@ -24,7 +24,10 @@ class User < ApplicationRecord
   # パスワードの最低文字数を6文字から4文字に変更
   validates :password, length: { minimum: 4 }, if: :password_required?
 
+
   has_many :boards, dependent: :destroy
+	has_many :cards, dependent: :destroy
+	has_many :comments, dependent: :destroy
 	has_one :profile, dependent: :destroy
 
 	def display_name
