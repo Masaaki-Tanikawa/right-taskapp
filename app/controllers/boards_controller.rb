@@ -7,7 +7,6 @@ class BoardsController < ApplicationController
   end
 
   def new
-		# このボードに紐づく全てのカードを取得して@cardsに代入する
     @board = current_user.boards.build
   end
 

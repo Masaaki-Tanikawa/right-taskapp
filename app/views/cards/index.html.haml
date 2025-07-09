@@ -3,17 +3,16 @@
   - @cards.each do |card|
     .cards
       = link_to board_card_path(@board, card), class: 'cards-link' do
-        - if card.eyecatch.attached?
-          .cards-image
-            = image_tag card.eyecatch
         .cards-content-top
           .cards-title= card.title
           .cards-description= card.description
         .cards-content-bottom
-          .cards-profile
-            = image_tag 'default-avatar.png'
+          .cards-author
+            .cards-image
+              = image_tag card.user.avatar_image
+            .cards-name= card.user.display_name
           .cards-comment
-            .cards-comment-number 23
+            .cards-comment-number= card.comment_count
             .cards-comment-icon
               = image_tag 'comment.svg'
 

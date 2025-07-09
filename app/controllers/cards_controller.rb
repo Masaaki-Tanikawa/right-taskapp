@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
     @board = Board.find(params[:board_id]) # URLのboard_idから対象のボードを取得
     @cards = @board.cards # そのボードに紐づく全カードを取得

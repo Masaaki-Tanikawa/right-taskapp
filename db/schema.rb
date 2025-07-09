@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_06_102537) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_09_160334) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -57,7 +57,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_06_102537) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["board_id"], name: "index_cards_on_board_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "comments", force: :cascade do |t|
@@ -65,7 +67,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_06_102537) do
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["card_id"], name: "index_comments_on_card_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "nickname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -84,5 +96,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_06_102537) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "boards", "users"
   add_foreign_key "cards", "boards"
+  add_foreign_key "cards", "users"
   add_foreign_key "comments", "cards"
+  add_foreign_key "comments", "users"
 end

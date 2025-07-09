@@ -1,0 +1,11 @@
+.inner
+  %h2 プロフィール情報
+  .profile
+    .profile-image
+      = image_tag current_user.avatar_image
+    .profile-name
+      #{current_user.display_name}
+    .profile-button
+      = link_to 'Edit', edit_profiles_path
+
+  .comments
