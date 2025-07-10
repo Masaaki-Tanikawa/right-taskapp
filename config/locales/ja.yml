@@ -16,6 +16,11 @@ ja:
         eyecatch: 'アイキャッチ'
       comment:
         content: 'コメント内容'
+      profile:
+        avatar: '表示画像'
+        nickname: '表示名'
+        edit_profile: '編集'
+        edit_account: 'アカウントを編集する'
   date:
     abbr_day_names:
     - 日

@@ -1,17 +1,17 @@
-.user-inner
+.inner
   %h2= t('devise.passwords.edit.change_your_password')
   = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
     = render "devise/shared/error_messages", resource: resource
     = f.hidden_field :reset_password_token
-    .user-field
-      = f.label :password, t('devise.passwords.edit.new_password'), class: 'user-label'
+    .form-field
+      = f.label :password, t('devise.passwords.edit.new_password'), class: 'form-label'
       - if @minimum_password_length
         %em= t('devise.shared.minimum_password_length', count: @minimum_password_length)
-      = f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'user-text'
-    .user-field
-      = f.label :password_confirmation, t('devise.passwords.edit.confirm_new_password'), class: 'user-label'
-      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'user-text'
-    .user-actions
+      = f.password_field :password, autofocus: true, autocomplete: "new-password", class: 'form-text'
+    .form-field
+      = f.label :password_confirmation, t('devise.passwords.edit.confirm_new_password'), class: 'form-label'
+      = f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-text'
+    .form-actions
       = f.submit t('devise.passwords.edit.change_my_password'), class: 'btn-primary'
 
 
