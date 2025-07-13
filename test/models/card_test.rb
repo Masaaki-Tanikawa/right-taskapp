@@ -3,7 +3,9 @@
 # Table name: cards
 #
 #  id          :bigint           not null, primary key
+#  deadline    :date
 #  description :text             not null
+#  status      :integer          default(0), not null
 #  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null

@@ -3,7 +3,9 @@
 # Table name: cards
 #
 #  id          :bigint           not null, primary key
+#  deadline    :date
 #  description :text             not null
+#  status      :integer          default(0), not null
 #  title       :string           not null
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
@@ -33,5 +35,5 @@ class Card < ApplicationRecord
   def comment_count
     comments.count
   end
-
+	enum status: { waiting: 0, progress: 1, close: 2 }
 end
