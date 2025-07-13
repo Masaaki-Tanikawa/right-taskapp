@@ -5,7 +5,14 @@
       = link_to board_card_path(@board, card), class: 'cards-link' do
         .cards-content-top
           .cards-title= card.title
-          .cards-description= card.description
+        .cards-content-middle
+          .cards-status
+            %p= image_tag 'status.svg'
+            %p= '進行中'
+          .cards-deadline
+            %p= image_tag 'deadline.svg'
+            %p= '2025/7/15'
+        .cards-description= card.description
         .cards-content-bottom
           .cards-author
             .cards-image
@@ -17,5 +24,5 @@
               = image_tag 'comment.svg'
 
   -#  このボードに紐づく新しいカード作成ページへのリンクを作る
-  = link_to new_board_card_path(@board), class: 'newcards' do
-    .newcards-content ＋ 新しいカードを追加
+  = link_to new_board_card_path(@board), class: 'create' do
+    .create-content ＋ 新しいカードを追加
