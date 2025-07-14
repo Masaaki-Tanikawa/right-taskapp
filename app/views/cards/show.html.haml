@@ -12,14 +12,14 @@
     .card-status
       .card-progress
         %p= image_tag 'status.svg'
-        %p= '進行中'
+        %p= t("enums.card.status.#{@card.status}")
       .card-deadline
         %p= image_tag 'deadline.svg'
-        %p= '2025/7/15'
+        %p= @card.deadline
     .card-text
       .card-description
         = @card.description
-        .card-comment-date= '2025/07/31'
+        .card-comment-date= l(@card.created_at, format: :long)
       .card-author
         .card-image
           = image_tag @card.user.avatar_image
@@ -37,7 +37,7 @@
             .card-name= comment.user.display_name
           .card-comment-text
             %p= comment.content
-            .card-comment-date= '2025/07/31'
+            .card-comment-date= l(comment.created_at, format: :long)
 
   = link_to new_board_card_comment_path(@board, @card), class: 'create' do
     .create-content ＋ 新しいコメントを追加

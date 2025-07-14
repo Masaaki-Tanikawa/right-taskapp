@@ -8,10 +8,10 @@
         .cards-content-middle
           .cards-status
             %p= image_tag 'status.svg'
-            %p= '進行中'
+            %p= t("enums.card.status.#{card.status}")
           .cards-deadline
             %p= image_tag 'deadline.svg'
-            %p= '2025/7/15'
+            %p= card.deadline
         .cards-description= card.description
         .cards-content-bottom
           .cards-author

@@ -53,6 +53,6 @@ end
   private
 
   def card_params
-    params.require(:card).permit(:title, :description, :eyecatch)
+    params.require(:card).permit(:title, :description, :deadline, :status, :eyecatch)
   end
 end

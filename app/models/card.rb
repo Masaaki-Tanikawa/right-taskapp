@@ -23,17 +23,28 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Card < ApplicationRecord
-  validates :title, presence: true
-  validates :title, length: { minimum: 2, maximum: 100 }
-  validates :title, format: { with: /\A(?!\@)/ }
-  validates :description, presence: true
-  validates :description, length: { minimum: 5 }
-	belongs_to :user
+  validates :title,
+    presence: true,
+    length: { minimum: 2, maximum: 100 },
+    format: { with: /\A(?!\@)/ }
+  validates :description,
+    presence: true,
+    length: { minimum: 5 }
+  validate :deadline_cannot_be_in_the_past
+  belongs_to :user
   belongs_to :board
-	has_one_attached :eyecatch
-	has_many :comments, dependent: :destroy
+  has_one_attached :eyecatch
+  has_many :comments, dependent: :destroy
+  enum :status, { waiting: 0, progress: 1, close: 2 }
   def comment_count
     comments.count
   end
-	enum status: { waiting: 0, progress: 1, close: 2 }
+
+  private
+  def deadline_cannot_be_in_the_past
+    return if deadline.blank?
+    if deadline < Date.today
+      errors.add(:deadline, :in_future)
+    end
+  end
 end
