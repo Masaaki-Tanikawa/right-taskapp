@@ -17,58 +17,81 @@
 		display: inline-block;
 	}
 	&-title {
-		font-size: 18px;
+		font-size: 24px;
 		font-weight: bold;
 	}
 	&-description {
-		font-size: 14px;
-		opacity: 0.4;
-		margin-top: 6px;
+		font-size: 18px;
+		margin-top: 12px;
 		display: -webkit-box;
 		-webkit-line-clamp: 2; /* 表示する最大行数 */
 		-webkit-box-orient: vertical;
 		overflow: hidden;
 		text-overflow: ellipsis;
 	}
-	&-author{
+	&-author {
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 	}
 	&-image {
-		margin-right: 8px;
+		margin-top: 4px;
 		img {
 			border-radius: 50%;
-			width: 30px;
-			height: 30px;
+			width: 40px;
+			height: 40px;
 		}
+	}
+	&-name {
+		font-size: 12px;
 	}
 	&-comment {
 		display: flex;
+		align-items: flex-start;
+		gap: 4px;
 		&-number {
-			opacity: 0.4;
-			font-size: 14px;
+			padding-top: 2px;
 		}
 		&-icon {
-			width: 20px;
+			img {
+				width: 30px;
+				height: 30px;
+			}
 		}
+	}
+	&-content-middle {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-top: 16px;
 	}
 	&-content-bottom {
 		margin-top: 36px;
 		display: flex;
 		justify-content: space-between;
-		align-items: end;
+		align-items: center;
 	}
-}
-.newcards {
-	border-radius: 10px;
-	border: 1px dotted #00000033;
-	height: 160px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-	&-content {
-		font-size: 18px;
+	&-status {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		p {
+			img {
+				width: 24px;
+				height: 24px;
+			}
+		}
+	}
+	&-deadline {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		p {
+			img {
+				width: 30px;
+				height: 30px;
+			}
+		}
 	}
 }
 
@@ -77,79 +100,146 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-bottom: 32px;
+		margin-bottom: 12px;
 		gap: 24px;
-
 	}
-	 &-title {
-			padding-bottom: 0;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			max-width: 100%;
+	&-title {
+		padding-bottom: 0;
+		max-width: 100%;
 	}
 	&-icon {
 		width: 24px;
 		position: relative;
-    display: inline-block;
+		display: inline-block;
 	}
-	&-description{
-		background: #F4F4F4;
-		padding: 20px 16px 26px;
-		font-size: 14px;
-		border-radius: 8px;
+
+	&-comment {
 		margin-bottom: 36px;
-		word-break: break-word;
-	}
-	&-comment{
-		margin-bottom: 36px;
-		&-title{
+
+		&-title {
+			display: flex;
+			justify-content: space-between;
 			font-size: 26px;
 			margin-bottom: 24px;
 		}
-		&-content{
+		&-content {
 			display: flex;
 			gap: 16px;
 			margin-top: 16px;
 		}
 		&-content:nth-child(2) {
-  margin-top: 0;
-}
-		&-text{
+			margin-top: 0;
+		}
+		&-text {
 			font-size: 16px;
+			width: 100%;
+			background: #f4f4f4;
+			padding: 8px;
+			border-radius: 10px;
+			position: relative;
+			&::after {
+				position: absolute;
+				content: "";
+				top: 12px;
+				left: -16px;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 8px 16px 8px 0;
+				border-color: transparent #f4f4f4 transparent transparent;
+			}
+		}
+		&-date {
+			font-size: 12px;
+			margin-top: 12px;
+			text-align: right;
 		}
 	}
-	&-author{
+	&-author {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+		font-size: 14px;
 	}
 	&-image {
 		img {
 			border-radius: 50%;
-			width: 40px;
-			height: 40px;
+			width: 30px;
+			height: 30px;
 		}
 	}
-	&-name{
-		font-size: 12px;
+	&-name {
+		font-size: 14px;
+		white-space: nowrap;
+		width: 100%;
+	}
+	&-status {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 12px;
+	}
+	&-progress {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		p {
+			img {
+				width: 24px;
+				height: 24px;
+			}
+		}
+	}
+	&-deadline {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		p {
+			img {
+				width: 30px;
+				height: 30px;
+			}
+		}
+	}
+	&-text {
+		display: flex;
+		gap: 16px;
+	}
+	&-description {
+		background: #f4f4f4;
+		padding: 16px;
+		font-size: 14px;
+		border-radius: 10px;
+		margin-bottom: 36px;
+		width: 100%;
+		position: relative;
+		&::after {
+			position: absolute;
+			content: "";
+			right: -16px;
+			top: 12px;
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 8px 0 8px 16px;
+			border-color: transparent transparent transparent #f4f4f4;
+		}
 	}
 }
 
-.newcomment-content {
+.create{
+	&-content{
 	border-radius: 10px;
 	border: 1px dotted #00000033;
 	height: 160px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	&-content {
-		font-size: 18px;
-	}
+	font-size: 18px;
 }
+}
+
 
 .card-icon:hover .dropdown-content {
-  display: block;
+	display: block;
 }
-

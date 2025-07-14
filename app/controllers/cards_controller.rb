@@ -19,6 +19,7 @@ end
   def create
     @board = Board.find(params[:board_id])  # URLのboard_idから対象のboardを取得
     @card = @board.cards.build(card_params) # 取得したBoardに紐づく新しいCardを作成
+		@card.user = current_user # カードの投稿者に現在ログインしているユーザーを設定
     if @card.save
       redirect_to board_card_path(@board, @card), notice: '保存できました' # 保存後、ネストされたカードの詳細ページ /boards/:board_id/cards/:id にリダイレクト
     else
@@ -52,6 +53,6 @@ end
   private
 
   def card_params
-    params.require(:card).permit(:title, :description, :eyecatch)
+    params.require(:card).permit(:title, :description, :deadline, :status, :eyecatch)
   end
 end

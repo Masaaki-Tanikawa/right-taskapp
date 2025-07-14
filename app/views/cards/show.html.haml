@@ -9,9 +9,26 @@
             .dropdown-content.mini
               = link_to '編集する', edit_board_card_path(@card)
               = link_to '削除する', board_card_path(@board, @card), data: { turbo_method: 'delete', turbo_confirm: '本当に削除してもよろしいですか？' }
-    .card-description= @card.description
+    .card-status
+      .card-progress
+        %p= image_tag 'status.svg'
+        %p= t("enums.card.status.#{@card.status}")
+      .card-deadline
+        %p= image_tag 'deadline.svg'
+        %p= @card.deadline
+    .card-text
+      .card-description
+        = @card.description
+        .card-comment-date= l(@card.created_at, format: :long)
+      .card-author
+        .card-image
+          = image_tag @card.user.avatar_image
+        .card-name= @card.user.display_name
+
     .card-comment
-      .card-comment-title Comment
+      .card-comment-title
+        %p= 'Comment'
+
       - @comments.each do |comment|
         .card-comment-content
           .card-author
@@ -20,6 +37,7 @@
             .card-name= comment.user.display_name
           .card-comment-text
             %p= comment.content
+            .card-comment-date= l(comment.created_at, format: :long)
 
-  = link_to new_board_card_comment_path(@board, @card), class: 'newcomment' do
-    .newcomment-content ＋ 新しいコメントを追加
+  = link_to new_board_card_comment_path(@board, @card), class: 'create' do
+    .create-content ＋ 新しいコメントを追加

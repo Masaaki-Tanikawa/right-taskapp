@@ -6,6 +6,6 @@
     .profile-name
       #{current_user.display_name}
     .profile-button
-      = link_to 'Edit', edit_profiles_path
-
-  .comments
+      = link_to t('activerecord.attributes.profile.edit_profile'), edit_profiles_path
+  .profile-link
+    = link_to t('activerecord.attributes.profile.edit_account'), edit_user_registration_path

@@ -6,6 +6,11 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+      models:
+        card:
+          attributes:
+            deadline:
+              in_future: 'は今日以降の日付を入力してください'
     attributes:
       board:
         title: 'タイトル'
@@ -13,9 +18,15 @@ ja:
       card:
         title: 'テーマ'
         description: '内容'
-        eyecatch: 'アイキャッチ'
+        status: 'ステータス'
+        deadline: '期限'
       comment:
         content: 'コメント内容'
+      profile:
+        avatar: '表示画像'
+        nickname: '表示名'
+        edit_profile: '編集'
+        edit_account: 'アカウント情報を編集する'
   date:
     abbr_day_names:
     - 日

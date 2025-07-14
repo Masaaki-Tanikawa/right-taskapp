@@ -25,5 +25,9 @@ module RightTaskapp
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.i18n.default_locale = :ja
+
+    # config.time_zone = 'Asia/Tokyo'
+    config.time_zone = 'Asia/Manila'
+    config.active_record.default_timezone = :local
   end
 end

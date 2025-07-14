@@ -1,0 +1,7 @@
+ja:
+  enums:
+    card:
+      status:
+        waiting: 開始待ち
+        progress: 進行中
+        close: 完了
