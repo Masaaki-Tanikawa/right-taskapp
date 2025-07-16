@@ -1,9 +1,35 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+
   def index
-    @board = Board.find(params[:board_id]) # URLのboard_idから対象のボードを取得
-    @cards = @board.cards # そのボードに紐づく全カードを取得
+  @board = Board.find(params[:board_id])
+
+  @cards = @board.cards.includes(user: :profile)
+
+  if params[:q].present?
+    @cards = @cards.where('cards.title ILIKE ?', "%#{params[:q]}%")
   end
+
+  sort_column = params[:sort] || 'created_at'
+  sort_direction = params[:direction] == 'desc' ? 'desc' : 'asc'
+
+  @cards =
+    case sort_column
+    when 'title'
+      @cards.order("title #{sort_direction}")
+    when 'status'
+      @cards.order("status #{sort_direction}")
+    when 'deadline'
+      @cards.order("deadline #{sort_direction}")
+    when 'nickname'
+      @cards
+            .joins(user: :profile)
+            .order("profiles.nickname #{sort_direction}")
+    else
+      @cards.order("created_at #{sort_direction}")
+    end
+end
+
 
 def show
   @board = Board.find(params[:board_id])
@@ -19,7 +45,7 @@ end
   def create
     @board = Board.find(params[:board_id])  # URLのboard_idから対象のboardを取得
     @card = @board.cards.build(card_params) # 取得したBoardに紐づく新しいCardを作成
-		@card.user = current_user # カードの投稿者に現在ログインしているユーザーを設定
+    @card.user = current_user # カードの投稿者に現在ログインしているユーザーを設定
     if @card.save
       redirect_to board_card_path(@board, @card), notice: '保存できました' # 保存後、ネストされたカードの詳細ページ /boards/:board_id/cards/:id にリダイレクト
     else

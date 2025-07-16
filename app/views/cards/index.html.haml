@@ -1,5 +1,20 @@
 .inner
   %h2= @board.title
+  - next_direction = params[:direction] == 'asc' ? 'desc' : 'asc'
+  .filter
+    .sort-links
+      %p ソート:
+      = link_to "タイトル", board_cards_path(@board, sort: 'title', direction: next_direction), class: 'filter-button'
+      = link_to "ステータス", board_cards_path(@board, sort: 'status', direction: next_direction), class: 'filter-button'
+      = link_to "締切", board_cards_path(@board, sort: 'deadline', direction: next_direction), class: 'filter-button'
+      = link_to "担当者", board_cards_path(@board, sort: 'nickname', direction: next_direction), class: 'filter-button'
+
+    = form_with url: board_cards_path(@board), method: :get, local: true, class: 'search-form' do
+      = text_field_tag :q, params[:q], placeholder: "タイトルを入力"
+      .search-buttons
+      = submit_tag "検索", class: 'filter-button'
+      = link_to "リセット", board_cards_path(@board), class: 'filter-button'
+
   - @cards.each do |card|
     .cards
       = link_to board_card_path(@board, card), class: 'cards-link' do
@@ -23,6 +38,6 @@
             .cards-comment-icon
               = image_tag 'comment.svg'
 
-  -#  このボードに紐づく新しいカード作成ページへのリンクを作る
-  = link_to new_board_card_path(@board), class: 'create' do
-    .create-content ＋ 新しいカードを追加
+  - if user_signed_in?
+    = link_to new_board_card_path(@board), class: 'create' do
+      .create-content ＋ 新しいカードを追加
