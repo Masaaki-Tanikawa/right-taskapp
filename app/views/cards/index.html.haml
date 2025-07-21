@@ -2,18 +2,21 @@
   %h2= @board.title
   - next_direction = params[:direction] == 'asc' ? 'desc' : 'asc'
   .filter
-    .sort-links
-      %p ソート:
-      = link_to "タイトル", board_cards_path(@board, sort: 'title', direction: next_direction), class: 'filter-button'
-      = link_to "ステータス", board_cards_path(@board, sort: 'status', direction: next_direction), class: 'filter-button'
-      = link_to "締切", board_cards_path(@board, sort: 'deadline', direction: next_direction), class: 'filter-button'
-      = link_to "担当者", board_cards_path(@board, sort: 'nickname', direction: next_direction), class: 'filter-button'
+    = form_with url: board_cards_path(@board), method: :get, local: true, class: 'search-form' do
+      .search-form
+        = select_tag :sort,options_for_select([['タイトル', 'title'],['ステータス', 'status'],['締切', 'deadline'],['担当者', 'nickname']], params[:sort]),class: 'filter-box'
+        - current_direction = params[:direction] || 'asc'
+        - next_direction = params[:direction] == 'asc' ? 'desc' : 'asc'
+        = hidden_field_tag :direction, next_direction
+        = hidden_field_tag :q, params[:q]   # ← これが重要！
+        - button_label = current_direction == 'asc' ? '並び替え ↓' : '並び替え ↑'
+        = submit_tag button_label, class: 'filter-button'
 
     = form_with url: board_cards_path(@board), method: :get, local: true, class: 'search-form' do
-      = text_field_tag :q, params[:q], placeholder: "タイトルを入力"
+      = text_field_tag :q, params[:q], placeholder: "タイトルを入力", class: 'filter-box'
       .search-buttons
-      = submit_tag "検索", class: 'filter-button'
-      = link_to "リセット", board_cards_path(@board), class: 'filter-button'
+        = submit_tag "検索", class: 'filter-button'
+        = link_to "リセット", board_cards_path(@board), class: 'filter-button'
 
   - @cards.each do |card|
     .cards
