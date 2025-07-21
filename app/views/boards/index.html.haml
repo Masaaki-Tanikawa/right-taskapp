@@ -1,5 +1,10 @@
 .inner
   %h2 ボード一覧
+  = form_with url: boards_path, method: :get, local: true, class: 'search-form is-board' do
+    = text_field_tag :q, params[:q], placeholder: "ボード名を入力", class: 'filter-box'
+    .search-buttons
+      = submit_tag "検索", class: 'filter-button'
+      = link_to "リセット", boards_path, class: 'filter-button'
   - @boards.each do |board|
     .board
       = link_to board_cards_path(board), class: 'board-link' do

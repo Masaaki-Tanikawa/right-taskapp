@@ -1,0 +1,64 @@
+@use "variables" as *;
+
+.filter {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 36px;
+	gap: 24px;
+	@media (min-width: 768px) {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	&-box {
+		width: 150px;
+		margin-right: 12px;
+		border: 1px solid #ccc;
+		border-radius: 6px;
+		padding-left: 8px;
+		&::placeholder {
+			font-size: 14px;
+		}
+	}
+	&-button {
+		display: inline-block;
+		padding: 6px;
+		font-size: 14px;
+		background-color: #f0f0f0;
+		color: #333;
+		text-decoration: none;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		transition:
+			background-color 0.2s,
+			color 0.2s;
+		font-weight: bold;
+		cursor: pointer;
+	}
+}
+
+.sort-links {
+	p {
+		display: inline;
+	}
+}
+
+.search{
+
+	&-form {
+	height: 35px;
+	display: flex;
+	}
+
+	&-buttons {
+  .filter-button {
+    &:last-child {
+			letter-spacing:-2.5px
+    }
+  }
+}
+}
+
+.search-form.is-board {
+		margin-bottom: 20px;
+		justify-content: end;
+	}
