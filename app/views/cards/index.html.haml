@@ -17,29 +17,29 @@
       .search-buttons
         = submit_tag "検索", class: 'filter-button'
         = link_to "リセット", board_cards_path(@board), class: 'filter-button'
-
-  - @cards.each do |card|
-    .cards
-      = link_to board_card_path(@board, card), class: 'cards-link' do
-        .cards-content-top
-          .cards-title= card.title
-        .cards-content-middle
-          .cards-status
-            %p= image_tag 'status.svg'
-            %p= t("enums.card.status.#{card.status}")
-          .cards-deadline
-            %p= image_tag 'deadline.svg'
-            %p= card.deadline
-        .cards-description= card.description
-        .cards-content-bottom
-          .cards-author
-            .cards-image
-              = image_tag card.user.avatar_image
-            .cards-name= card.user.display_name
-          .cards-comment
-            .cards-comment-number= card.comment_count
-            .cards-comment-icon
-              = image_tag 'comment.svg'
+  .cards
+    - @cards.each do |card|
+      .cards-item
+        = link_to board_card_path(@board, card), class: 'cards-link' do
+          .cards-content-top
+            .cards-title= card.title
+          .cards-content-middle
+            .cards-status
+              %p= image_tag 'status.svg'
+              %p= t("enums.card.status.#{card.status}")
+            .cards-deadline
+              %p= image_tag 'deadline.svg'
+              %p= card.deadline
+          .cards-description= card.description
+          .cards-content-bottom
+            .cards-author
+              .cards-image
+                = image_tag card.user.avatar_image
+              .cards-name= card.user.display_name
+            .cards-comment
+              .cards-comment-number= card.comment_count
+              .cards-comment-icon
+                = image_tag 'comment.svg'
 
   - if user_signed_in?
     = link_to new_board_card_path(@board), class: 'create' do

@@ -1,9 +1,22 @@
 @use "variables" as *;
 
+
 .cards {
+		@media (min-width: 768px) {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 24px;
+		padding: 16px;
+	}
+	&-item {
 	background: #f4f4f4;
 	border-radius: 10px;
 	margin-bottom: 26px;
+	@media (min-width: 768px) {
+		width: 100%;
+		margin-bottom: 0px;
+	}
+	}
 	&-link {
 		width: 100%;
 		padding: 20px 16px 20px;

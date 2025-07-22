@@ -1,11 +1,22 @@
 @use "variables" as *;
-
+.boards {
+	@media (min-width: 768px) {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+		gap: 24px;
+		padding: 16px;
+	}
+}
 .board {
 	background: #f4f4f4;
 	border-radius: 10px;
 	padding: 16px 16px 32px;
+	margin: 0 auto;
 	margin-bottom: 26px;
-
+	@media (min-width: 768px) {
+		width: 100%;
+		margin-bottom: 0px;
+	}
 	&-link {
 		width: 100%;
 	}
@@ -45,21 +56,21 @@
 	}
 	&-card {
 		a {
-		&:hover {
-			color: darkgray;
-		}
+			&:hover {
+				color: darkgray;
+			}
 		}
 	}
 	&-create {
-	border-radius: 10px;
-	border: 1px dotted #00000033;
-	height: 160px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+		border-radius: 10px;
+		border: 1px dotted #00000033;
+		height: 160px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
-	&-content {
-		font-size: 18px;
+		&-content {
+			font-size: 18px;
+		}
 	}
-}
 }
