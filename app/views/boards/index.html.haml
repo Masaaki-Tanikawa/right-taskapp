@@ -7,19 +7,21 @@
       = link_to "リセット", boards_path, class: 'filter-button'
   .boards
     - @boards.each do |board|
-      .board
-        = link_to board_cards_path(board), class: 'board-link' do
+      = link_to board_cards_path(board), class: 'board' do
+        .board-top
           .board-content
             .board-title= board.title
             .board-description= board.description
+          .board-author
+            %p 管理者
+            .board-image= image_tag board.user.avatar_image
+            .board-name= board.user.display_name
         .board-cards
           - unless board.cards.empty?
             .board-cards-title カード一覧
           %ul.board-cards-list
             - board.cards.each do |card|
-              %li.board-card
-                = link_to board_card_path(board, card) do
-                  = card.title
+              %li.board-card= card.title
   - if user_signed_in?
     = link_to new_board_path, class: 'board-create' do
       .board-create-content ＋ 新しいボードを作成

@@ -1,6 +1,22 @@
 .inner
-  %h2= @board.title
-  - next_direction = params[:direction] == 'asc' ? 'desc' : 'asc'
+  .card-top
+    .card-title
+      %h2= @board.title
+      %h3= @board.description
+    - if user_signed_in? && current_user.boards.exists?(id: @board.id)
+      .card-actions
+        .card-icon
+          = image_tag 'actions.svg', alt: 'Actions Icon'
+          .dropdown-content.mini
+            = link_to '編集する', edit_board_path(@board)
+            = link_to '削除する', board_path(@board), data: { turbo_method: 'delete', turbo_confirm: '本当に削除してもよろしいですか？' }
+    - else
+      .board-author
+        %p 管理者
+        .board-image
+          = image_tag @board.user.avatar_image
+        .board-name= @board.user.display_name
+    - next_direction = params[:direction] == 'asc' ? 'desc' : 'asc'
   .filter
     = form_with url: board_cards_path(@board), method: :get, local: true, class: 'search-form' do
       .search-form
@@ -33,6 +49,7 @@
           .cards-description= card.description
           .cards-content-bottom
             .cards-author
+              %p 担当者
               .cards-image
                 = image_tag card.user.avatar_image
               .cards-name= card.user.display_name
