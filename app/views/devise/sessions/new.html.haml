@@ -1,5 +1,5 @@
-.inner
-  %h2= t('devise.sessions.new.sign_in')
+.inner.inner-form
+  %h2.user-title= t('devise.sessions.new.sign_in')
   = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
     .form-field
       = f.label :email, class: 'form-label'

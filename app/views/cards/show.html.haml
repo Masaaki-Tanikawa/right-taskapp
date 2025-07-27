@@ -1,7 +1,9 @@
 .inner
   .card
     .card-top
-      %h2.card-title= @card.title
+      .card-title
+        %h2= @card.title
+        %h3= @card.description
       - if user_signed_in? && current_user.boards.exists?(id: @board.id)
         .card-actions
           .card-icon
@@ -27,8 +29,7 @@
 
     .card-comment
       .card-comment-title
-        %p= 'Comment'
-
+        %p= t('activerecord.attributes.card.comment_title')
       - @comments.each do |comment|
         .card-comment-content
           .card-author

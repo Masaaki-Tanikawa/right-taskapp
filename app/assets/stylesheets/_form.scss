@@ -1,3 +1,14 @@
+.inner-form{
+	max-width: 480px;
+	width: 100%;
+	margin: 0 auto;
+	h2{
+		padding-bottom: 0;
+	}
+	.comment-title{
+		padding-bottom: 24px;
+	}
+}
 .form {
 	ul {
 		margin-bottom: 20px;
@@ -28,11 +39,11 @@
 	}
 
 	&-actions {
-		margin-top: 48px;
+		margin-top: 36px;
 		text-align: center;
 	}
 	&-links {
-		margin-top: 24px;
+		margin-top: 48px;
 		p {
 			font-size: 14px;
 			text-decoration: underline;

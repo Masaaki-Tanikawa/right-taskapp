@@ -6,7 +6,6 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 		gap: 24px;
-		padding: 16px;
 	}
 	&-item {
 	background: #f4f4f4;
@@ -32,6 +31,7 @@
 	&-title {
 		font-size: 24px;
 		font-weight: bold;
+
 	}
 	&-description {
 		font-size: 18px;
@@ -56,7 +56,7 @@
 		}
 	}
 	&-name {
-		font-size: 12px;
+		font-size: 14px;
 	}
 	&-comment {
 		display: flex;
@@ -111,7 +111,6 @@
 .card {
 	&-top {
 		display: flex;
-		align-items: center;
 		justify-content: space-between;
 		margin-bottom: 12px;
 		gap: 24px;
@@ -122,18 +121,17 @@
 	}
 	&-icon {
 		width: 24px;
+		padding-top: 8px;
 		position: relative;
 		display: inline-block;
 	}
 
 	&-comment {
-		margin-bottom: 36px;
 
 		&-title {
 			display: flex;
 			justify-content: space-between;
 			font-size: 26px;
-			margin-bottom: 24px;
 		}
 		&-content {
 			display: flex;
@@ -184,13 +182,14 @@
 	&-name {
 		font-size: 14px;
 		white-space: nowrap;
+		text-align: center;
 		width: 100%;
 	}
 	&-status {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		margin-bottom: 12px;
+		margin-bottom: 24px;
 	}
 	&-progress {
 		display: flex;
@@ -241,9 +240,10 @@
 }
 
 .create{
+	margin-top: 24px;
 	&-content{
 	border-radius: 10px;
-	border: 1px dotted #00000033;
+	border: 4px dotted #00000033;
 	height: 160px;
 	display: flex;
 	justify-content: center;

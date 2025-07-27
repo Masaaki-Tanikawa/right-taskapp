@@ -72,11 +72,34 @@
   color: #333;
 }
 
+.user-title {
+  margin-bottom: 24px;
+}
+
+.password-new {
+  max-width: 360px;
+}
+
+@media (min-width: 768px) {
+  .boards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+}
+
 .board {
   background: #f4f4f4;
   border-radius: 10px;
   padding: 16px 16px 32px;
+  margin: 0 auto;
   margin-bottom: 26px;
+}
+@media (min-width: 768px) {
+  .board {
+    width: 100%;
+    margin-bottom: 0px;
+  }
 }
 .board-link {
   width: 100%;
@@ -115,8 +138,9 @@
   color: darkgray;
 }
 .board-create {
+  margin-top: 24px;
   border-radius: 10px;
-  border: 1px dotted rgba(0, 0, 0, 0.2);
+  border: 4px dotted rgba(0, 0, 0, 0.2);
   height: 160px;
   display: flex;
   justify-content: center;
@@ -126,10 +150,23 @@
   font-size: 18px;
 }
 
-.cards {
+@media (min-width: 768px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+}
+.cards-item {
   background: #f4f4f4;
   border-radius: 10px;
   margin-bottom: 26px;
+}
+@media (min-width: 768px) {
+  .cards-item {
+    width: 100%;
+    margin-bottom: 0px;
+  }
 }
 .cards-link {
   width: 100%;
@@ -214,7 +251,6 @@
 
 .card-top {
   display: flex;
-  align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
   gap: 24px;
@@ -225,17 +261,14 @@
 }
 .card-icon {
   width: 24px;
+  padding-top: 8px;
   position: relative;
   display: inline-block;
-}
-.card-comment {
-  margin-bottom: 36px;
 }
 .card-comment-title {
   display: flex;
   justify-content: space-between;
   font-size: 26px;
-  margin-bottom: 24px;
 }
 .card-comment-content {
   display: flex;
@@ -289,7 +322,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  margin-bottom: 24px;
 }
 .card-progress {
   display: flex;
@@ -334,9 +367,12 @@
   border-color: transparent transparent transparent #f4f4f4;
 }
 
+.create {
+  margin-top: 24px;
+}
 .create-content {
   border-radius: 10px;
-  border: 1px dotted rgba(0, 0, 0, 0.2);
+  border: 4px dotted rgba(0, 0, 0, 0.2);
   height: 160px;
   display: flex;
   justify-content: center;
@@ -346,6 +382,18 @@
 
 .card-icon:hover .dropdown-content {
   display: block;
+}
+
+.inner-form {
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+}
+.inner-form h2 {
+  padding-bottom: 0;
+}
+.inner-form .comment-title {
+  padding-bottom: 24px;
 }
 
 .form ul {
@@ -428,20 +476,35 @@
   border-radius: 50%;
 }
 
-.sort-icon {
-  margin-left: 4px;
-  font-size: 12px;
+.filter {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  gap: 24px;
 }
-
-.sort-links {
-  margin-bottom: 16px;
+@media (min-width: 768px) {
+  .filter {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.filter-box {
+  width: 150px;
+  margin-right: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding-left: 8px;
+}
+.filter-box::-moz-placeholder {
   font-size: 14px;
 }
-
-.sort-button {
+.filter-box::placeholder {
+  font-size: 14px;
+}
+.filter-button {
   display: inline-block;
-  margin-right: 8px;
-  padding: 6px 12px;
+  padding: 6px;
+  font-size: 14px;
   background-color: #f0f0f0;
   color: #333;
   text-decoration: none;
@@ -449,26 +512,24 @@
   border-radius: 4px;
   transition: background-color 0.2s, color 0.2s;
   font-weight: bold;
+  cursor: pointer;
 }
 
-.sort-button:hover {
-  background-color: #ddd;
-  color: #000;
+.sort-links p {
+  display: inline;
 }
 
 .search-form {
-  margin-bottom: 20px;
+  height: 35px;
   display: flex;
 }
+.search-buttons .filter-button:last-child {
+  letter-spacing: -2.5px;
+}
 
-.search-button {
-  margin-left: 8px;
-  padding: 6px 12px;
-  background: #eee;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 14px;
+.search-form.is-board {
+  margin-bottom: 20px;
+  justify-content: end;
 }
 
 html {
@@ -550,6 +611,12 @@ img {
 h2 {
   font-size: 28px;
   font-weight: bold;
+  padding-bottom: 12px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: normal;
   padding-bottom: 32px;
 }
 
@@ -560,8 +627,7 @@ h2 {
   display: inline-block;
   text-align: center;
   border: 0;
-  width: 100%;
-  padding: 8px 0px;
+  padding: 8px 24px;
   border-radius: 4px;
   cursor: pointer;
 }

@@ -87,6 +87,11 @@ img{
 h2{
 	font-size: 28px;
 	font-weight: bold;
+	padding-bottom: 12px;
+}
+h3{
+	font-size: 18px;
+	font-weight: normal;
 	padding-bottom: 32px;
 }
 .btn-primary{
@@ -96,8 +101,7 @@ h2{
 	display: inline-block;
 	text-align: center;
 	border: 0;
-	width: 100%;
-	padding: 8px 0px;
+	padding: 8px 24px;
 	border-radius: 4px;
 	cursor: pointer;
 }

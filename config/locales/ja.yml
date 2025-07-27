@@ -20,6 +20,7 @@ ja:
         description: '内容'
         status: 'ステータス'
         deadline: '期限'
+        comment_title: 'コメント'
       comment:
         content: 'コメント内容'
       profile:

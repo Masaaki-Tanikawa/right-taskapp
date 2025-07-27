@@ -1,8 +1,8 @@
-.inner
-  %h2= t('devise.passwords.new.forgot_your_password')
+.inner.inner-form
+  %h2.user-title= t('devise.passwords.new.forgot_your_password')
   = form_for(resource, as: resource_name, url: password_path(resource_name)) do |f|
     .form-field
       = f.label :email, class: 'form-label'
       = f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-text'
     .form-actions
-      = f.submit t('devise.passwords.new.send_me_reset_password_instructions'), class: 'btn-primary'
+      = f.submit t('devise.passwords.new.send_me_reset_password_instructions'), class: 'btn-primary password-new'
