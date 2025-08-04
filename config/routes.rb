@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: 'boards#index'
-  resources :boards , except: [:show] do
+  resources :boards do
     resources :cards do
       resources :comments, only: [:new, :create]
     end
