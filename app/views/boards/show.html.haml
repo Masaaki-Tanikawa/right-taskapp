@@ -19,7 +19,7 @@
         .board-name= @board.user.display_name
     - next_direction = params[:direction] == 'asc' ? 'desc' : 'asc'
   .filter
-    = form_with url: board_cards_path(@board), method: :get, local: true, class: 'search-form' do
+    = form_with url: board_path(@board), method: :get, local: true, class: 'search-form' do
       .search-form
         = select_tag :sort,options_for_select([['タイトル', 'title'],['ステータス', 'status'],['締切', 'deadline'],['担当者', 'nickname']], params[:sort]),class: 'filter-box'
         - current_direction = params[:direction] || 'asc'
@@ -29,11 +29,11 @@
         - button_label = current_direction == 'asc' ? '並び替え ↓' : '並び替え ↑'
         = submit_tag button_label, class: 'filter-button'
 
-    = form_with url: board_cards_path(@board), method: :get, local: true, class: 'search-form' do
+    = form_with url: board_path(@board), method: :get, local: true, class: 'search-form' do
       = text_field_tag :q, params[:q], placeholder: "タイトルを入力", class: 'filter-box'
       .search-buttons
         = submit_tag "検索", class: 'filter-button'
-        = link_to "リセット", board_cards_path(@board), class: 'filter-button'
+        = link_to "リセット", board_path(@board), class: 'filter-button'
   .cards
     - @cards.each do |card|
       .cards-item
