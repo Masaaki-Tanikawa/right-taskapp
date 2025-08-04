@@ -57,7 +57,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update(board_params)
-      redirect_to boards_path, notice: "\u66F4\u65B0\u3067\u304D\u307E\u3057\u305F"
+      redirect_to board_path(@board), notice: "\u66F4\u65B0\u3067\u304D\u307E\u3057\u305F"
     else
       flash.now[:error] = "\u66F4\u65B0\u306B\u5931\u6557\u3057\u307E\u3057\u305F"
       render :edit, status: :unprocessable_entity
