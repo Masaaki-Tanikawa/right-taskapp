@@ -10,6 +10,33 @@ class BoardsController < ApplicationController
     end
   end
 
+  def show
+    @board = Board.find(params[:id])
+
+    @cards = @board.cards.includes(user: :profile)
+    if params[:q].present?
+      @cards = @cards.where('cards.title ILIKE ?', "%#{params[:q]}%")
+    end
+
+    sort_column = params[:sort] || 'created_at'
+    sort_direction = params[:direction] == 'desc' ? 'desc' : 'asc'
+
+    @cards =
+      case sort_column
+      when 'title'
+        @cards.order("title #{sort_direction}")
+      when 'status'
+        @cards.order("status #{sort_direction}")
+      when 'deadline'
+        @cards.order("deadline #{sort_direction}")
+      when 'nickname'
+        @cards
+              .joins(user: :profile)
+              .order("profiles.nickname #{sort_direction}")
+      else
+        @cards.order("created_at #{sort_direction}")
+      end
+  end
 
   def new
     @board = current_user.boards.build
