@@ -79,3 +79,5 @@ gem "dartsass-rails", "~> 0.5.1"
 
 gem "devise", "~> 4.9"
 gem "devise-i18n"
+
+gem 'ransack'

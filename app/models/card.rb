@@ -35,11 +35,17 @@ class Card < ApplicationRecord
   belongs_to :board
   has_one_attached :eyecatch
   has_many :comments, dependent: :destroy
+	has_one :profile, through: :user
   enum :status, { waiting: 0, progress: 1, close: 2 }
   def comment_count
     comments.count
   end
-
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title status deadline created_at updated_at]
+  end
+  def self.ransackable_associations(auth_object = nil)
+    %w[user profile]
+  end
   private
   def deadline_cannot_be_in_the_past
     return if deadline.blank?

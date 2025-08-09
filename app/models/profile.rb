@@ -16,4 +16,8 @@ class Profile < ApplicationRecord
   belongs_to :user
   has_one_attached :avatar
   validates :nickname, presence: true
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[nickname]
+  end
 end

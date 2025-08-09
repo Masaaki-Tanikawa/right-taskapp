@@ -42,23 +42,42 @@
 	}
 }
 
-.search{
-
+.search {
 	&-form {
-	height: 35px;
-	display: flex;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 100%;
+		@media (min-width: 768px) {
+			flex-direction: row;
+		}
 	}
-
+	&-item {
+		display: flex;
+	}
+	&-sorts {
+		display: flex;
+		gap: 8px;
+		width: 100%;
+		margin-bottom: 12px;
+		@media (min-width: 768px) {
+			margin-bottom: 0px;
+		}
+	}
 	&-buttons {
-  .filter-button {
-    &:last-child {
-			letter-spacing:-2.5px
-    }
-  }
-}
+		.filter-button {
+			&:last-child {
+				letter-spacing: -2.5px;
+			}
+		}
+	}
 }
 
-.search-form.is-board {
-		margin-bottom: 20px;
-		justify-content: end;
+.search-item.is-board {
+	margin-top: 12px;
+	margin-bottom: 12px;
+	justify-content: end;
+	@media (min-width: 768px) {
+		margin-top: 0px;
 	}
+}
