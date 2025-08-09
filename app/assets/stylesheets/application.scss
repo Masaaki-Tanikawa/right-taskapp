@@ -1,21 +1,20 @@
-@use 'header';
-@use 'user';
-@use 'board';
-@use 'card';
-@use 'form';
-@use 'comment';
-@use 'profile';
-@use 'filter';
-@use 'variables' as *;
-
+@use "header";
+@use "user";
+@use "board";
+@use "card";
+@use "form";
+@use "comment";
+@use "profile";
+@use "filter";
+@use "variables" as *;
 
 html {
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+	word-spacing: 1px;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	box-sizing: border-box;
 	height: 100%;
 	word-break: break-word;
 }
@@ -23,79 +22,84 @@ html {
 *,
 *:before,
 *:after {
-  box-sizing: border-box;
-  margin: 0;
+	box-sizing: border-box;
+	margin: 0;
 }
 
 body {
-  background-color: $base-bg-color;
-  font-size: 1em;
-  color: $text-base-color;
+	background-color: $base-bg-color;
+	font-size: 1em;
+	color: $text-base-color;
 	height: 100%;
 }
 
 .container {
-  padding: 16px 16px;
-  width: 100%;
+	padding: 16px 16px;
+	width: 100%;
 }
 
 a {
 	display: block;
-  text-decoration: none;
-  color: $text-base-color;
+	text-decoration: none;
+	color: $text-base-color;
 }
 
-img{
+img {
 	width: 100%;
 	height: auto;
 	object-fit: cover;
 }
 
 .flash {
-	padding:16px 24px 0px;
+	padding: 16px 24px 0px;
 }
 
 .dropdown-content {
-  font-weight: normal;
-  display: none;
-  right: 0;
-  position: absolute;
-  background-color: white;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+	font-weight: normal;
+	display: none;
+	right: 0;
+	position: absolute;
+	background-color: white;
+	min-width: 160px;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
 
-  &.mini {
-    min-width: 100px;
-  }
+	&.mini {
+		min-width: 100px;
+	}
 }
 
 .dropdown-content a {
-  padding: 8px 16px;
-  text-decoration: none;
-  display: block;
-  color: $text-base-color;
+	padding: 8px 16px;
+	text-decoration: none;
+	display: block;
+	color: $text-base-color;
 }
 
 .dropdown-content a:hover {
-  background-color: white;
+	background-color: white;
 }
 
-.inner{
-	padding:32px 24px;
+.inner {
+	padding: 32px 24px;
+	&.is-card{
+	max-width: 480px;
+	width: 100%;
+	margin: 0 auto;
+	}
 }
-h2{
+h2 {
 	font-size: 28px;
 	font-weight: bold;
 	padding-bottom: 12px;
 }
-h3{
+h3 {
 	font-size: 18px;
 	font-weight: normal;
 	padding-bottom: 32px;
 }
-.btn-primary{
-	background-color: #F8BD1C;
+.btn-primary {
+	background-color: #f8bd1c;
 	color: #fff;
 	font-size: 18px;
 	display: inline-block;
@@ -107,5 +111,5 @@ h3{
 }
 
 .header-avatar:hover .dropdown-content {
-  display: block;
+	display: block;
 }

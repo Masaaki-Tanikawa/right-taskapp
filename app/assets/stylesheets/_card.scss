@@ -1,20 +1,19 @@
 @use "variables" as *;
 
-
 .cards {
-		@media (min-width: 768px) {
+	@media (min-width: 768px) {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 		gap: 24px;
 	}
 	&-item {
-	background: #f4f4f4;
-	border-radius: 10px;
-	margin-bottom: 26px;
-	@media (min-width: 768px) {
-		width: 100%;
-		margin-bottom: 0px;
-	}
+		background: #f4f4f4;
+		border-radius: 10px;
+		margin-bottom: 26px;
+		@media (min-width: 768px) {
+			width: 100%;
+			margin-bottom: 0px;
+		}
 	}
 	&-link {
 		width: 100%;
@@ -31,7 +30,6 @@
 	&-title {
 		font-size: 24px;
 		font-weight: bold;
-
 	}
 	&-description {
 		font-size: 18px;
@@ -127,16 +125,37 @@
 	}
 
 	&-comment {
-
 		&-title {
 			display: flex;
 			justify-content: space-between;
 			font-size: 26px;
+			align-items: center;
+			gap: 12px;
+			margin-bottom: 12px;
 		}
 		&-content {
 			display: flex;
 			gap: 16px;
 			margin-top: 16px;
+			&.is-owner {
+				flex-direction: row-reverse;
+
+
+			.card-comment-text {
+				position: relative;
+			&::after {
+				position: absolute;
+				content: "";
+				top: 12px;
+				left: 100%;
+				width: 0;
+				height: 0;
+				border-style: solid;
+				border-width: 8px 0 8px 16px;
+				border-color: transparent transparent transparent #F4F4F4;
+			}
+		}
+			}
 		}
 		&-content:nth-child(2) {
 			margin-top: 0;
@@ -239,19 +258,18 @@
 	}
 }
 
-.create{
+.create {
 	margin-top: 24px;
-	&-content{
-	border-radius: 10px;
-	border: 4px dotted #00000033;
-	height: 160px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 18px;
+	&-content {
+		border-radius: 10px;
+		border: 4px dotted #00000033;
+		height: 160px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 18px;
+	}
 }
-}
-
 
 .card-icon:hover .dropdown-content {
 	display: block;

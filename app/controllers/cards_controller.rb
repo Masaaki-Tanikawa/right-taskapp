@@ -7,7 +7,9 @@ class CardsController < ApplicationController
 def show
   @board = Board.find(params[:board_id])
   @card = @board.cards.find(params[:id])
-  @comments = @card.comments
+  @q = @card.comments.includes(:user).ransack(params[:q])
+  @q.sorts = ['created_at asc'] if @q.sorts.empty?
+  @comments = @q.result
 end
 
   def new

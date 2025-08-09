@@ -1,11 +1,10 @@
-.inner
+.inner.is-card
   .board-back= link_to "＜ ボード：#{@board.title}に戻る", board_path(@board)
   .card
     .card-top
       .card-title
         %h2= @card.title
-        %h3= @card.description
-      - if user_signed_in? && current_user.boards.exists?(id: @board.id)
+      - if user_signed_in? && current_user == @card.user
         .card-actions
           .card-icon
             = image_tag 'actions.svg', alt: 'Actions Icon'
@@ -24,6 +23,7 @@
         = @card.description
         .card-comment-date= l(@card.created_at, format: :long)
       .card-author
+        %p= '担当者'
         .card-image
           = image_tag @card.user.avatar_image
         .card-name= @card.user.display_name
@@ -31,8 +31,10 @@
     .card-comment
       .card-comment-title
         %p= t('activerecord.attributes.card.comment_title')
+        = sort_link @q, :created_at, '投稿日時', default_order: :desc, class:'filter-button'
       - @comments.each do |comment|
-        .card-comment-content
+        - owner_comment = (comment.user_id == @card.user_id)
+        .card-comment-content{ class: ("is-owner" if owner_comment) }
           .card-author
             .card-image
               = image_tag comment.user.avatar_image
@@ -40,6 +42,22 @@
           .card-comment-text
             %p= comment.content
             .card-comment-date= l(comment.created_at, format: :long)
-
-  = link_to new_board_card_comment_path(@board, @card), class: 'create' do
-    .create-content ＋ 新しいコメントを追加
+    :javascript
+      document.addEventListener("turbo:load", function () {
+        // クエリ削除（初回ロード時のみ）
+        if (window.location.search.length > 0) {
+          const url = new URL(window.location.href);
+          url.search = "";
+          history.replaceState(null, "", url);
+        }
+      });
+      // ブラウザバック検出してリロード
+      window.addEventListener("pageshow", function (event) {
+        const navType = performance.getEntriesByType("navigation")[0]?.type;
+        if (event.persisted || navType === "back_forward") {
+          location.reload();
+        }
+      });
+  - if user_signed_in?
+    = link_to new_board_card_comment_path(@board, @card), class: 'create', data: { turbo: false } do
+      .create-content ＋ 新しいコメントを追加

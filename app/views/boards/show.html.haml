@@ -17,27 +17,42 @@
         .board-image
           = image_tag @board.user.avatar_image
         .board-name= @board.user.display_name
-    - next_direction = params[:direction] == 'asc' ? 'desc' : 'asc'
-  .filter
-    = form_with url: board_path(@board), method: :get, local: true, class: 'search-form' do
-      .search-form
-        = select_tag :sort,options_for_select([['タイトル', 'title'],['ステータス', 'status'],['締切', 'deadline'],['担当者', 'nickname']], params[:sort]),class: 'filter-box'
-        - current_direction = params[:direction] || 'asc'
-        - next_direction = params[:direction] == 'asc' ? 'desc' : 'asc'
-        = hidden_field_tag :direction, next_direction
-        = hidden_field_tag :q, params[:q]   # ← これが重要！
-        - button_label = current_direction == 'asc' ? '並び替え ↓' : '並び替え ↑'
-        = submit_tag button_label, class: 'filter-button'
 
-    = form_with url: board_path(@board), method: :get, local: true, class: 'search-form' do
-      = text_field_tag :q, params[:q], placeholder: "タイトルを入力", class: 'filter-box'
-      .search-buttons
-        = submit_tag "検索", class: 'filter-button'
-        = link_to "リセット", board_path(@board), class: 'filter-button'
+  .filter
+    = search_form_for @q, url: board_path(@board), method: :get, html: { class: 'search-form' } do |f|
+      .search-item
+        .search-sorts
+          %p= sort_link(@q, :title, "タイトル", class: 'filter-button')
+          %p= sort_link(@q, :status, "ステータス", class: 'filter-button')
+          %p= sort_link(@q, :deadline, "締切", class: 'filter-button')
+          %p= sort_link(@q, :user_profile_nickname, "担当者", class: 'filter-button')
+      .search-item
+        = f.search_field :title_cont, placeholder: "タイトルを入力", class: 'filter-box'
+        .search-buttons
+          = f.submit "検索", class: 'filter-button'
+          = link_to "リセット", board_path(@board), class: 'filter-button'
+  :javascript
+    document.addEventListener("turbo:load", function () {
+      // クエリ削除（初回ロード時のみ）
+      if (window.location.search.length > 0) {
+        const url = new URL(window.location.href);
+        url.search = "";
+        history.replaceState(null, "", url);
+      }
+    });
+    // ブラウザバック検出してリロード
+    window.addEventListener("pageshow", function (event) {
+      const navType = performance.getEntriesByType("navigation")[0]?.type;
+      if (event.persisted || navType === "back_forward") {
+        location.reload();
+      }
+    });
+
+
   .cards
     - @cards.each do |card|
       .cards-item
-        = link_to board_card_path(@board, card), class: 'cards-link' do
+        = link_to board_card_path(@board, card), class: 'cards-link', data: { turbo: false } do
           .cards-content-top
             .cards-title= card.title
           .cards-content-middle

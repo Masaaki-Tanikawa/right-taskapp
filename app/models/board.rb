@@ -26,4 +26,8 @@ class Board < ApplicationRecord
 
   belongs_to :user
   has_many :cards, dependent: :destroy
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[title description created_at updated_at]
+  end
 end
