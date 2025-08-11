@@ -22,6 +22,8 @@
           %ul.board-cards-list
             - board.cards.each do |card|
               %li.board-card= card.title
+  .pagination-wrapper
+    = paginate @boards, params: request.query_parameters, theme: nil
   - if user_signed_in?
     = link_to new_board_path, class: 'board-create' do
       .board-create-content ＋ 新しいボードを作成
