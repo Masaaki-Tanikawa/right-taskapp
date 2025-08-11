@@ -4,15 +4,15 @@ class BoardsController < ApplicationController
 
 def index
   @q = Board.ransack(params[:q])
-  @q.sorts = 'created_at asc' if @q.sorts.blank?
-  @boards = @q.result.includes(:user, :cards)
+  @q.sorts = 'created_at desc' if @q.sorts.blank?
+  @boards = @q.result.includes(:user, :cards).page(params[:page])
 end
 
 
 	def show
 		@board = Board.find(params[:id])
 		@q = @board.cards.includes(user: :profile).ransack(params[:q])
-		@cards = @q.result
+		@cards = @q.result.page(params[:page])
 	end
 
   def new

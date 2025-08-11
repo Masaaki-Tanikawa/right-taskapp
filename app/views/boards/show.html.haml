@@ -73,6 +73,8 @@
               .cards-comment-number= card.comment_count
               .cards-comment-icon
                 = image_tag 'comment.svg'
+  .pagination-wrapper
+    = paginate @cards, params: request.query_parameters, theme: nil
 
   - if user_signed_in?
     = link_to new_board_card_path(@board), class: 'create' do
