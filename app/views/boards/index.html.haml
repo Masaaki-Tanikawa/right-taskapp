@@ -1,16 +1,22 @@
 .inner
   %h2 ボード一覧
-  = search_form_for @q, url: boards_path, method: :get, html: { class: 'search-item is-board' } do |f|
-    = f.search_field :title_cont, placeholder: "ボード名を入力", class: 'filter-box'
-    .search-buttons
-      = f.submit "検索", class: 'filter-button'
-      = link_to "リセット", boards_path, class: 'filter-button'
+  = search_form_for @q, url: boards_path, method: :get, html: { class: 'search-form is-board' } do |f|
+    .search-item
+      .search-sorts
+        %p= sort_link(@q, :id, "ボード番号", class: 'filter-button')
+    .search-item
+      = f.search_field :title_cont, placeholder: "ボード名を入力", class: 'filter-box'
+      .search-buttons
+        = f.submit "検索", class: 'filter-button'
+        = link_to "リセット", boards_path, class: 'filter-button'
   .boards
     - @boards.each do |board|
       = link_to board_path(board), class: 'board' do
         .board-top
           .board-content
-            .board-title= board.title
+            .board-title
+              %span= "B%03d:" % board.id
+              = board.title
             .board-description= board.description
           .board-author
             %p 管理者
@@ -21,7 +27,9 @@
             .board-cards-title カード一覧
           %ul.board-cards-list
             - board.cards.each do |card|
-              %li.board-card= card.title
+              %li.board-card
+                %span= "C%03d:" % card.id
+                = card.title
   .pagination-wrapper
     = paginate @boards, params: request.query_parameters, theme: nil
   - if user_signed_in?
