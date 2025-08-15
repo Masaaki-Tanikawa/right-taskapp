@@ -73,11 +73,7 @@
 	}
 }
 
-.search-item.is-board {
-	margin-top: 12px;
+.search-form.is-board {
+	margin-top: 20px;
 	margin-bottom: 12px;
-	justify-content: end;
-	@media (min-width: 768px) {
-		margin-top: 0px;
-	}
 }

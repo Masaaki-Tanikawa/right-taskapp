@@ -41,7 +41,7 @@ class Card < ApplicationRecord
     comments.count
   end
   def self.ransackable_attributes(auth_object = nil)
-    %w[title status deadline created_at updated_at]
+    %w[id title deadline created_at updated_at]
   end
   def self.ransackable_associations(auth_object = nil)
     %w[user profile]

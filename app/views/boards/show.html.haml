@@ -2,7 +2,9 @@
   .board-back= link_to '＜ ボード一覧に戻る', root_path()
   .card-top
     .card-title
-      %h2= @board.title
+      %h2
+        %span= "B%03d:" % @board.id
+        = @board.title
       %h3= @board.description
     - if user_signed_in? && current_user.boards.exists?(id: @board.id)
       .card-actions
@@ -17,15 +19,12 @@
         .board-image
           = image_tag @board.user.avatar_image
         .board-name= @board.user.display_name
-
   .filter
     = search_form_for @q, url: board_path(@board), method: :get, html: { class: 'search-form' } do |f|
       .search-item
         .search-sorts
-          %p= sort_link(@q, :title, "タイトル", class: 'filter-button')
-          %p= sort_link(@q, :status, "ステータス", class: 'filter-button')
+          %p= sort_link(@q, :id, "カード番号", class: 'filter-button')
           %p= sort_link(@q, :deadline, "締切", class: 'filter-button')
-          %p= sort_link(@q, :user_profile_nickname, "担当者", class: 'filter-button')
       .search-item
         = f.search_field :title_cont, placeholder: "タイトルを入力", class: 'filter-box'
         .search-buttons
@@ -54,7 +53,9 @@
       .cards-item
         = link_to board_card_path(@board, card), class: 'cards-link', data: { turbo: false } do
           .cards-content-top
-            .cards-title= card.title
+            .cards-title
+              %span= "C%03d:" % card.id
+              = card.title
           .cards-content-middle
             .cards-status
               %p= image_tag 'status.svg'

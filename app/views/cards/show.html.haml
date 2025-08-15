@@ -1,9 +1,11 @@
 .inner.is-card
-  .board-back= link_to "＜ ボード：#{@board.title}に戻る", board_path(@board)
+  .board-back= link_to "＜ #{"B%03d:" % @board.id}#{ @board.title} に戻る", board_path(@board)
   .card
     .card-top
       .card-title
-        %h2= @card.title
+        %h2
+          %span= "C%03d:" % @card.id
+          = @card.title
       - if user_signed_in? && current_user == @card.user
         .card-actions
           .card-icon
