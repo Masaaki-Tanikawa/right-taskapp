@@ -20,8 +20,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Comment < ApplicationRecord
-	belongs_to :user
-	belongs_to :card
+  belongs_to :user
+  belongs_to :card
   validates :content, presence: true
 
   def self.ransackable_attributes(_auth_object = nil)

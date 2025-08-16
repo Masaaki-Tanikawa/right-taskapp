@@ -26,24 +26,24 @@ class User < ApplicationRecord
 
 
   has_many :boards, dependent: :destroy
-	has_many :cards, dependent: :destroy
-	has_many :comments, dependent: :destroy
-	has_one :profile, dependent: :destroy
+  has_many :cards, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_one :profile, dependent: :destroy
 
-	def display_name
-    profile&.nickname || self.email.split('@').first
-	end
-	def prepare_profile
+  def display_name
+    profile&.nickname || self.email.split("@").first
+  end
+  def prepare_profile
     profile || build_profile
   end
   def avatar_image
     if profile&.avatar&.attached?
       profile.avatar
     else
-      'default-avatar.png'
+      "default-avatar.png"
     end
   end
-	def self.ransackable_attributes(auth_object = nil)
+  def self.ransackable_attributes(auth_object = nil)
     %w[id email created_at updated_at]
   end
   def self.ransackable_associations(auth_object = nil)
