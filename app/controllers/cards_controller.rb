@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [ :new, :create, :edit, :update, :destroy ]
 
 
 
@@ -8,7 +8,7 @@ def show
   @board = Board.find(params[:board_id])
   @card = @board.cards.find(params[:id])
   @q = @card.comments.includes(:user).ransack(params[:q])
-  @q.sorts = ['created_at desc'] if @q.sorts.empty?
+  @q.sorts = [ "created_at desc" ] if @q.sorts.empty?
   @comments = @q.result
 end
 
@@ -22,7 +22,7 @@ end
     @card = @board.cards.build(card_params) # 取得したBoardに紐づく新しいCardを作成
     @card.user = current_user # カードの投稿者に現在ログインしているユーザーを設定
     if @card.save
-      redirect_to board_card_path(@board, @card), notice: '保存できました' # 保存後、ネストされたカードの詳細ページ /boards/:board_id/cards/:id にリダイレクト
+      redirect_to board_card_path(@board, @card), notice: "保存できました" # 保存後、ネストされたカードの詳細ページ /boards/:board_id/cards/:id にリダイレクト
     else
       render :new, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ end
     @card = Card.find(params[:id])
     @board = @card.board
     if @card.update(card_params)
-      redirect_to board_card_path(@board, @card), notice: '更新できました'
+      redirect_to board_card_path(@board, @card), notice: "更新できました"
     else
       render :edit, status: :unprocessable_entity
     end
@@ -48,7 +48,7 @@ end
     @board = Board.find(params[:board_id]) # board を特定
     @card = @board.cards.find(params[:id]) # board に紐づく card を取得
     @card.destroy!
-    redirect_to board_cards_path(@board), status: :see_other, notice: '削除に成功しました'
+    redirect_to board_cards_path(@board), status: :see_other, notice: "削除に成功しました"
   end
 
   private

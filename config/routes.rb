@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
   # 認証ページURLパスを変更
   devise_for :users, path_names: {
-  sign_in: 'login',
-  sign_out: 'logout',
-  sign_up: 'register'
+  sign_in: "login",
+  sign_out: "logout",
+  sign_up: "register"
   }
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  root to: 'boards#index'
+  root to: "boards#index"
   resources :boards do
     resources :cards do
-      resources :comments, only: [:new, :create]
+      resources :comments, only: [ :new, :create ]
     end
   end
 
-  resource :profiles, only: [:show, :edit, :update]
+  resource :profiles, only: [ :show, :edit, :update ]
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
@@ -26,5 +26,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-
 end

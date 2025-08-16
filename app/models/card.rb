@@ -35,7 +35,7 @@ class Card < ApplicationRecord
   belongs_to :board
   has_one_attached :eyecatch
   has_many :comments, dependent: :destroy
-	has_one :profile, through: :user
+  has_one :profile, through: :user
   enum :status, { waiting: 0, progress: 1, close: 2 }
   def comment_count
     comments.count
